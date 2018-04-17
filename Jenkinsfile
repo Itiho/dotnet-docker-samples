@@ -10,8 +10,9 @@ node {
     stage('Build image') {
         /* This builds the actual image; synonymous to
          * docker build on the command line */
-
-        app = docker.build("itiho/teste3", "-f dotnetapp-prod/Dockerfile .")
+        dir('dotnetapp-prod') {
+            docker.build("itiho/teste3:${env.BUILD_NUMBER}")
+        }
     }
 
     stage('Test image') {
