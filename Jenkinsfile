@@ -20,7 +20,6 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         echo "etapas de teste"
-        echo ${commit_id}
     }
 
     stage('Push image') {
