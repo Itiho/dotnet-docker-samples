@@ -29,7 +29,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'itiho-dockerhub') {
-            app.push("${commit_id}")
+            app.push("${env.BUILD_NUMBER}")
             app.push("latest")
         }
     }
