@@ -20,6 +20,7 @@ node {
          * For this example, we're using a Volkswagen-type approach ;-) */
 
         echo "etapas de teste"
+        echo ${commit_id}
     }
 
     stage('Push image') {
@@ -28,7 +29,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'itiho-dockerhub') {
-            app.push("${branchVersion}")
+            app.push("${commit_id}")
             app.push("latest")
         }
     }
