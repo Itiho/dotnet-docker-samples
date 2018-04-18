@@ -19,9 +19,7 @@ node {
         /* Ideally, we would run a test framework against our image.
          * For this example, we're using a Volkswagen-type approach ;-) */
 
-        app.inside {
-            sh 'echo "Tests passed"'
-        }
+        echo "etapas de teste"
     }
 
     stage('Push image') {
@@ -30,7 +28,7 @@ node {
          * Second, the 'latest' tag.
          * Pushing multiple tags is cheap, as all the layers are reused. */
         docker.withRegistry('https://registry.hub.docker.com', 'itiho-dockerhub') {
-            app.push("${env.BUILD_NUMBER}")
+            app.push("${branchVersion}")
             app.push("latest")
         }
     }
